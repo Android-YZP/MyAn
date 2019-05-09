@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="4000"
+    android:repeatCount = "50"
+    android:ordering="sequentially"
+    android:repeatMode="restart">
+
+    <!--// 组合动画同样具备公共属性-->
+    <!--android:duration="3000" // 动画持续时间（ms），必须设置，动画才有效果-->
+    <!--android:startOffset ="1000" // 动画延迟开始时间（ms）-->
+    <!--android:fillBefore = “true” // 动画播放完后，视图是否会停留在动画开始的状态，默认为true-->
+    <!--android:fillAfter = “false” // 动画播放完后，视图是否会停留在动画结束的状态，优先于fillBefore值，默认为false-->
+    <!--android:fillEnabled= “true” // 是否应用fillBefore值，对fillAfter值无影响，默认为true-->
+    <!--android:repeatMode= “restart” // 选择重复播放动画模式，restart代表正序重放，reverse代表倒序回放，默认为restart|-->
+    <!--android:repeatCount = “0” // 重放次数（所以动画的播放次数=重放次数+1），为infinite时无限重复-->
+    <!--android:interpolator = @[package:]anim/interpolator_resource // 插值器，即影响动画的播放速度,下面会详细讲-->
+
+    <set android:ordering="together" >
+
+        <rotate
+            android:duration="4000"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="15" />
+
+
+        <!--// 设置平移动画，语法同单个动画-->
+        <translate
+            android:duration="4000"
+            android:fromXDelta="0"
+            android:fromYDelta="0"
+            android:toXDelta="10%p"
+            android:toYDelta="10%p" />
+
+        <scale
+            android:duration="4000"
+            android:fromXScale="1.0"
+            android:fromYScale="1.0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toXScale="1.5"
+            android:toYScale="1.5" />
+    </set>
+
+
+    <set android:ordering="together">
+        <rotate
+
+            android:duration="4000"
+            android:fromDegrees="15"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="0" />
+
+        <translate
+            android:duration="4000"
+            android:fromXDelta="10%p"
+            android:fromYDelta="10%p"
+            android:toXDelta="0"
+            android:toYDelta="0" />
+
+        <scale
+            android:duration="4000"
+            android:fromXScale="1.5"
+            android:fromYScale="1.5"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toXScale="1.0"
+            android:toYScale="1.0" />
+
+    </set>
+
+
+    <!--<alpha-->
+    <!--android:duration="3000"-->
+    <!--android:fromAlpha="1.0"-->
+    <!--android:startOffset="7000"-->
+    <!--android:toAlpha="0.0" />-->
+
+
+    <!--// 设置缩放动画，语法同单个动画-->
+
+    <!--// 特别注意：-->
+    <!--// 1. 在组合动画里scale缩放动画设置的repeatCount（重复播放）和fillBefore（播放完后，视图是否会停留在动画开始的状态）是无效的。-->
+    <!--// 2. 所以如果需要重复播放或者回到原位的话需要在set标签里设置-->
+    <!--// 3. 但是由于此处rotate旋转动画里已设置repeatCount为infinite，所以动画不会结束，也就看不到重播和回复原位-->
+
+</set>
